@@ -4,6 +4,7 @@ import (
     "database/sql/driver"
     "encoding/json"
     "errors"
+    "gorm.io/gorm"
     "time"
 
     "github.com/google/uuid"
@@ -11,6 +12,8 @@ import (
 
 // Book struct to describe book object.
 type Book struct {
+    gorm.Model
+
     ID         uuid.UUID `db:"id" json:"id" validate:"required,uuid"`
     CreatedAt  time.Time `db:"created_at" json:"created_at"`
     UpdatedAt  time.Time `db:"updated_at" json:"updated_at"`
